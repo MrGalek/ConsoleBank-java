@@ -6,6 +6,8 @@ import java.util.List;
 public class MockDb
 {
     private List<Person> personList;
+    private List<Client> clientList;
+    private List<Staff> staffList;
 
     public MockDb()
     {
@@ -33,6 +35,20 @@ public class MockDb
                 .get();
 
         return person.isType();
+    }
+
+    public double getClientStand(int personNumber)
+    {
+        var person = clientList.stream().filter(x -> x.getNumber() == personNumber)
+                .findFirst()
+                .get();
+
+        return person.getAccountStand();
+    }
+
+    public boolean isPersonExist(int personNumber)
+    {
+        return personList.stream().anyMatch(x -> x.getNumber() == personNumber);
     }
 
 }

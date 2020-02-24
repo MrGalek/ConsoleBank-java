@@ -8,10 +8,41 @@ public class BankController
     public BankController()
     {
         bankView = new BankView();
+        mockDb = new MockDb();
     }
 
     public void startApp()
     {
-        bankView.showLoginMenu();
+        var loginId = bankView.showLoginMenu();
+        if(mockDb.isPersonExist(loginId))
+        {
+            if(mockDb.getPersonType(loginId))
+            {
+                Client sessionPerson = new Client();
+                sessionPerson.setAccountStand(mockDb.getClientStand(loginId));
+                sessionPerson.setName(mockDb.getPersonName(loginId));
+                sessionPerson.setNumber(loginId);
+                sessionPerson.setType(true);
+
+                bankView.showClientUi(sessionPerson.getName(), sessionPerson.getAccountStand(), sessionPerson.getNumber());
+                var action = bankView.getClientAction();
+            }
+            else
+            {
+                Staff sessionPerson = new Staff();
+                sessionPerson.setName(mockDb.getPersonName(loginId));
+                sessionPerson.setNumber(loginId);
+                sessionPerson.setType(true);
+            }
+
+
+        }
+        else
+        {
+            bankView.showNotUserFound();
+            startApp();
+        }
     }
+
+
 }
