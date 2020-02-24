@@ -3,12 +3,10 @@ package com.github.mrgalek;
 public class Client extends Person
 {
     private double accountStand;
-    private ClientTransaction clientTransaction;
 
     Client()
     {
         super();
-        clientTransaction = new ClientTransaction();
     }
 
     public double getAccountStand()
@@ -31,8 +29,4 @@ public class Client extends Person
         accountStand -=moneyToBeDeducted;
     }
 
-    public ClientTransaction getClientTransaction()
-    {
-        return clientTransaction;
-    }
 }

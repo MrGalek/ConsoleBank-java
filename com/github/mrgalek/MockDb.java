@@ -12,11 +12,15 @@ public class MockDb
     public MockDb()
     {
         personList = new ArrayList<>();
+        clientList = new ArrayList<>();
+        staffList = new ArrayList<>();
+        loadMockData();
     }
 
-    public void addPerson(Person person)
+    public void addClient(Client client)
     {
-        personList.add(person);
+        clientList.add(client);
+        personList.add(client);
     }
 
     public String getPersonName(int personNumber)
@@ -51,4 +55,40 @@ public class MockDb
         return personList.stream().anyMatch(x -> x.getNumber() == personNumber);
     }
 
+    private void loadMockData()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            var mockClient = new Client();
+            mockClient.setName("Jan Kowalski"+i);
+            mockClient.setNumber(150+personList.size());
+            mockClient.setType(true);
+            mockClient.setAccountStand(1950*i);
+            personList.add(mockClient);
+            clientList.add(mockClient);
+        }
+
+        var mockStaff = new Staff();
+        mockStaff.setName("Anna Nowak");
+        mockStaff.setNumber(150+personList.size());
+        mockStaff.setType(false);
+        personList.add(mockStaff);
+        staffList.add(mockStaff);
+    }
+
+    public Client getClient(int recipient)
+    {
+        var person = clientList.stream().filter(x -> x.getNumber() == recipient)
+            .findFirst()
+            .get();
+
+        return person;
+    }
+
+    public void updateClientStand(Client client)
+    {
+        clientList.stream().filter(x -> x.getNumber() == client.getNumber())
+                .findFirst()
+                .get().setAccountStand(client.getAccountStand());
+    }
 }
