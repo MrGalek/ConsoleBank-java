@@ -6,7 +6,7 @@ public class ClientBankUi extends BankUi
     {
         System.out.println(" ");
         System.out.println("Transfer money -> [1]");
-        System.out.println("Close app -> [Other number]");
+        System.out.println("Logout -> [Other number]");
         return keyboardInput.nextInt();
     }
 }

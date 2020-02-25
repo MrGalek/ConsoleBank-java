@@ -33,7 +33,7 @@ public class StaffController
                 paymentOnAccount();
                 break;
             case 3:
-                WithdrawingMoney();
+                wthdrawingMoney();
                 break;
             case 4:
                 addingClient();
@@ -67,7 +67,7 @@ public class StaffController
         serveStaff();
     }
 
-    private void WithdrawingMoney()
+    private void wthdrawingMoney()
     {
         var clientNumber = staffBankUi.getSenderNumberFromUi();
         var amount = staffBankUi.getTransferAmount();

@@ -14,10 +14,10 @@ public class StaffBankUi extends BankUi
     {
         System.out.println(" ");
         System.out.println("Transfer money -> [1]");
-        System.out.println("Payment on account-> [2]");
+        System.out.println("Payment on account -> [2]");
         System.out.println("Withdrawing money -> [3]");
-        System.out.println("Adding client-> [5]");
-        System.out.println("Close app-> [Other number]");
+        System.out.println("Adding client -> [4]");
+        System.out.println("Logout -> [Other number]");
         return keyboardInput.nextInt();
     }
 

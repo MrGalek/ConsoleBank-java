@@ -18,23 +18,23 @@ public class BankController
     public void startApp()
     {
         var personNumber = bankUi.showLoginMenu();
-        if(mockDb.isPersonExist(personNumber))
+        if(personNumber!=0)
         {
-            if(mockDb.getPersonType(personNumber))
+            if (mockDb.isPersonExist(personNumber))
             {
-                ClientController clientController = new ClientController(personNumber,mockDb);
-                clientController.serveClient();
-            }
-            else
+                if (mockDb.getPersonType(personNumber))
+                {
+                    ClientController clientController = new ClientController(personNumber, mockDb);
+                    clientController.serveClient();
+                } else
+                {
+                    StaffController staffController = new StaffController(personNumber, mockDb);
+                    staffController.serveStaff();
+                }
+            } else
             {
-                StaffController staffController = new StaffController(personNumber,mockDb);
-                staffController.serveStaff();
+                bankUi.showNotUserFound();
             }
-
-        }
-        else
-        {
-            bankUi.showNotUserFound();
             startApp();
         }
     }

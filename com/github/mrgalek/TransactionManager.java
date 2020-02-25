@@ -10,7 +10,7 @@ public class TransactionManager
     {
         var standAfterTransaction = tmpSender.getAccountStand() - amountOfMoney;
 
-        if(standAfterTransaction > 0) return true;
+        if(standAfterTransaction >= 0) return true;
         else return false;
     }
 
