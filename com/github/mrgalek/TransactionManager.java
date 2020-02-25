@@ -38,4 +38,14 @@ public class TransactionManager
     {
         return tmpRecipent;
     }
+
+    public boolean withdrawingMoney(Client client, double amount)
+    {
+        return true;
+    }
+
+    public boolean paymentOnAccount(Client client, double amount)
+    {
+        return true;
+    }
 }
