@@ -34,32 +34,35 @@ public class ClientController
 
     public void transferMoney()
     {
-        var recipientNumber = clientBankUi.getRecipientNumberFromUi();
-        var amount = clientBankUi.getTransferAmount();
-        if(mockDb.isPersonExist(recipientNumber))
+        try
         {
-            var recipient = mockDb.getClient(recipientNumber);
 
-            TransactionManager transaction = new TransactionManager();
-            if(transaction.transferMoney(sessionClient,recipient,amount))
-            {
-                mockDb.updateClientStand(transaction.getTmpRecipent());
-                mockDb.updateClientStand(transaction.getTmpSender());
+            var recipientNumber = clientBankUi.getRecipientNumberFromUi();
+            var amount = clientBankUi.getTransferAmount();
 
-                clientBankUi.showTransactionOk();
+                var recipient = mockDb.getClient(recipientNumber);
 
-            }else
-            {
-                clientBankUi.showTransactionFailed();
-            }
+                TransactionManager transaction = new TransactionManager();
+                if (transaction.transferMoney(sessionClient, recipient, amount))
+                {
+                    mockDb.updateClientStand(transaction.getTmpRecipent());
+                    mockDb.updateClientStand(transaction.getTmpSender());
+
+                    clientBankUi.showTransactionOk();
+
+                } else
+                {
+                    clientBankUi.showTransactionFailed();
+                }
         }
-        else
+        catch (Exception e)
         {
             clientBankUi.showTransactionFailed();
         }
-
-        serveClient();
-
+        finally
+        {
+            serveClient();
+        }
     }
 
 }

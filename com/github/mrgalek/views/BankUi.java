@@ -16,6 +16,7 @@ public class BankUi
         showHeader();
 
         System.out.println("Write client or staff number");
+        System.out.println("If you want close app -> 0");
         System.out.print("Number: ");
         return keyboardInput.nextInt();
 
@@ -52,7 +53,7 @@ public class BankUi
     public double getTransferAmount()
     {
         System.out.println("Transfer amount: ");
-        return keyboardInput.nextInt();
+        return keyboardInput.nextDouble();
     }
 
     public void showTransactionFailed()
