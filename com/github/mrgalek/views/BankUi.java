@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BankUi
 {
-    Scanner keyboardInput;
+    protected Scanner keyboardInput;
 
     public BankUi()
     {

@@ -27,11 +27,6 @@ public class Person
         this.name = name;
     }
 
-    public boolean isType()
-    {
-        return type;
-    }
-
     public void setType(boolean type)
     {
         this.type = type;

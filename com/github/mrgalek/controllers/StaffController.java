@@ -3,7 +3,6 @@ package com.github.mrgalek.controllers;
 import com.github.mrgalek.MockDb;
 import com.github.mrgalek.Staff;
 import com.github.mrgalek.TransactionManager;
-import com.github.mrgalek.views.ClientBankUi;
 import com.github.mrgalek.views.StaffBankUi;
 
 public class StaffController

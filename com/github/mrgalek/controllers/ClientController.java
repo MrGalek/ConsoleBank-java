@@ -32,7 +32,7 @@ public class ClientController
         }
     }
 
-    public void transferMoney()
+    private void transferMoney()
     {
         try
         {

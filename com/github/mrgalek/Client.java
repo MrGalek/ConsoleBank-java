@@ -19,14 +19,4 @@ public class Client extends Person
         this.accountStand = accountStand;
     }
 
-    public void addMoney(double moneyToBeAdded)
-    {
-        accountStand +=moneyToBeAdded;
-    }
-
-    public void deductMoney(double moneyToBeDeducted)
-    {
-        accountStand -=moneyToBeDeducted;
-    }
-
 }

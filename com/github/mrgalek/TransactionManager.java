@@ -6,7 +6,7 @@ public class TransactionManager
     private Client tmpRecipent;
     private double amountOfMoney;
 
-    public boolean transferPossible()
+    private boolean transferPossible()
     {
         var standAfterTransaction = tmpSender.getAccountStand() - amountOfMoney;
 
@@ -41,11 +41,31 @@ public class TransactionManager
 
     public boolean withdrawingMoney(Client client, double amount)
     {
-        return true;
+        tmpSender = client;
+        amountOfMoney = amount;
+
+        if(transferPossible())
+        {
+            tmpSender.setAccountStand(tmpSender.getAccountStand() - amountOfMoney);
+            return true;
+        }
+        else return false;
     }
 
     public boolean paymentOnAccount(Client client, double amount)
     {
-        return true;
+        tmpSender = client;
+        amountOfMoney = amount;
+
+        try
+        {
+            tmpSender.setAccountStand(tmpSender.getAccountStand() + amountOfMoney);
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
     }
 }

@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class MockDb
 {
-    //private List<Person> personList;
     private Map<Integer,Boolean> persones;
     private List<Client> clientList;
     private List<Staff> staffList;
